@@ -1,0 +1,32 @@
+ion-img{
+    width: 250px;
+    margin: auto;
+}
+
+// ion-card{
+//     position: relative;
+// }
+
+.tachado{
+    text-align: right;
+    margin: 10px;
+    color: red;
+    text-decoration: line-through;
+    font-size: 20px;
+}
+
+.normal{
+    text-align: right;
+    margin: 10px;
+}
+
+.icon-producto{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    margin: 20px;
+    font-size: 30px;
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 100%;
+}

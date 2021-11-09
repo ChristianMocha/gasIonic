@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-wrap"> Perfil </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon
+          color="primary"
+          slot="icon-only"
+          name="menu-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <h3 class="encabezado">Ingresa tus datos</h3>
+  
+  <ion-item *ngIf="user">
+    <ion-label position="floating">E-mail:</ion-label>
+    <ion-input name="email" [(ngModel)]="user.email" type="email" inputmode="text"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="!ingresarEnable">
+    <ion-label position="floating">Nombre:</ion-label>
+    <ion-input name="name"  [(ngModel)]="user.name" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="user">
+    <ion-label position="floating">Celular:</ion-label>
+    <ion-input name="cell" [(ngModel)]="user.celular" type="number" inputmode="numeric"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="!ingresarEnable">
+    <ion-label position="floating">Referencia a la ubicación:</ion-label>
+    <ion-input name="ref" [(ngModel)]="user.direccion" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="!ingresarEnable">
+    <ion-label>Foto referencial:</ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+        <label for="file-upload">
+          <ion-icon slot="icon-only" name="images"></ion-icon>
+        </label>
+        <input (change)="newImage($event)" id="file-upload" style="display: none;" type="file" accept="image/*">
+        <!-- <input (change)="newImage($event)" id="file-upload" style="display: none;" type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif"> -->
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <ion-item *ngIf="user">
+    <img class="image" [src]="user.img" alt="">
+  </ion-item>
+
+
+  <div class="buttonn">
+    <ion-button *ngIf="!ingresarEnable" class="button" expand="full" color="dark" (click)="ingresarEnable = true"> Ingresar </ion-button>
+    <ion-button *ngIf="ingresarEnable" class="button" expand="full" color="dark" (click)="ingresar()"> Login </ion-button>
+    <ion-button *ngIf="!ingresarEnable" class="button" expand="full" color="dark" (click)="registrar()">Registrar</ion-button>
+    <ion-button *ngIf="ingresarEnable" class="button" expand="full" color="dark" (click)="ingresarEnable = false">o Registrar</ion-button>
+  </div>
+  <div  class="buttonn" *ngIf="idUser">
+    <ion-button class="button" expand="full" color="dark" (click)="salir()">
+      Salir
+    </ion-button>
+  </div>
+</ion-content>

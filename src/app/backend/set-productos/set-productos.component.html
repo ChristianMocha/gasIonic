@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-wrap"> Configuracion de productos </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon
+          color="primary"
+          slot="icon-only"
+          name="menu-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-buttons *ngIf="idProducto">
+    <ion-button slot="start" (click)="atras()">
+        <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <h3 class="encabezado" *ngIf="!idProducto;else title">Ingrese datos del producto</h3>
+
+  <ng-template #title>
+    <h3 class="encabezado">Actualizar datos del producto</h3>
+  </ng-template>
+  
+
+  
+  <ion-item *ngIf="producto">
+    <ion-label position="floating">Nombre:</ion-label>
+    <ion-input [(ngModel)]="producto.name" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="producto">
+    <ion-label position="floating">Precio Normal:</ion-label>
+    <ion-input [(ngModel)]="producto.precioNormal" type="number" inputmode="numeric"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="producto">
+    <ion-label position="floating">Precio reducido:</ion-label>
+    <ion-input [(ngModel)]="producto.precioDescuento" type="number" inputmode="numeric"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Foto:</ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+        <label for="file-upload">
+          <ion-icon slot="icon-only" name="images"></ion-icon>
+        </label>
+        <input (change)="newImage($event)" id="file-upload" style="display: none;" type="file" accept="image/*">
+        <!-- <input (change)="newImage($event)" id="file-upload" style="display: none;" type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif"> -->
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-item *ngIf="producto">
+    <img class="image" [src]="producto.img" alt="">
+  </ion-item>
+
+    <ion-button class="button" expand="full" color="dark" (click)="onUpload(producto.img)" *ngIf="!idProducto;else update">
+      Guardar
+    </ion-button>
+
+  <ng-template #update>
+    <ion-button class="button" expand="full" color="dark" (click)="onUpload(producto.img)" >
+      Actualizar
+    </ion-button>
+  </ng-template>
+
+  
+    
+
+
+  <ion-item *ngFor="let productos of productos">
+    <ion-label>{{productos.name}}</ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="updateProd(productos.id)">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button (click)="delete(productos)">
+        <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+
+ 
+  
+
+</ion-content>
