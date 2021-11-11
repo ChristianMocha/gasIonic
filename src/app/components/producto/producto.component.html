@@ -7,6 +7,11 @@
   <ion-card-content>
     <p class="tachado">$ {{producto.precioDescuento}}</p>
     <p class="normal">$ {{producto.precioNormal}}</p>
-    <ion-icon class="icon-producto" name="cart"></ion-icon>
+    <ion-icon (click)="addCarrito()" class="icon-producto" name="cart"></ion-icon>
+
+    <p class="comentario" (click)="openModal()">
+      Comentarios
+      <ion-icon class="icon" name="chatbubble-ellipses"></ion-icon>
+    </p>
   </ion-card-content>
 </ion-card>

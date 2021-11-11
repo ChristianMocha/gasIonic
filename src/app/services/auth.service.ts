@@ -1,14 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { UsersService } from './users.service';
+import { Users } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private afsAuth: AngularFireAuth, private fireBase: AngularFirestore) { 
-    this.getUserUID();
+  datosUser: Users;
+
+  constructor(private afsAuth: AngularFireAuth, private fireBase: AngularFirestore, private userService: UsersService) { 
+    this.stateUser();
+  }
+
+  stateUser(){
+    this.stateAuth().subscribe(
+      res => {
+        if (res != null) {
+          this.getInfoUser();
+        }
+      }
+    );
   }
 
   registrar(email: string, password: string){
@@ -34,5 +48,21 @@ export class AuthService {
 
   stateAuth(){
     return this.afsAuth.authState;
+  }
+
+
+  // obtener la info del usuario
+
+  async getInfoUser(){
+    const uid = await this.getUserUID();
+    this.userService.getUserById(uid).subscribe(
+      res => {
+        if (res !== undefined) {
+          this.datosUser = res;
+          console.log("datosUser -> ", this.datosUser);
+        }
+      }
+
+    );
   }
 }

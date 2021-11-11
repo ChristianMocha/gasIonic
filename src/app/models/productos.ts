@@ -4,5 +4,5 @@ export class Productos{
     precioNormal: number;
     precioDescuento: number;
     img: string;
-    fecha: Date;
+    fecha?: Date;
 }

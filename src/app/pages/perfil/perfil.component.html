@@ -19,21 +19,21 @@
   
   <ion-item *ngIf="user">
     <ion-label position="floating">E-mail:</ion-label>
-    <ion-input name="email" [(ngModel)]="user.email" type="email" inputmode="text"></ion-input>
+    <ion-input *ngIf="user" name="email" [(ngModel)]="user.email" type="email" inputmode="text"></ion-input>
   </ion-item>
   <ion-item *ngIf="!ingresarEnable">
     <ion-label position="floating">Nombre:</ion-label>
-    <ion-input name="name"  [(ngModel)]="user.name" type="text" inputmode="text"></ion-input>
+    <ion-input *ngIf="user" name="name"  [(ngModel)]="user.name" type="text" inputmode="text"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="user">
     <ion-label position="floating">Celular:</ion-label>
-    <ion-input name="cell" [(ngModel)]="user.celular" type="number" inputmode="numeric"></ion-input>
+    <ion-input *ngIf="user" name="cell" [(ngModel)]="user.celular" type="number" inputmode="numeric"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="!ingresarEnable">
     <ion-label position="floating">Referencia a la ubicación:</ion-label>
-    <ion-input name="ref" [(ngModel)]="user.direccion" type="text" inputmode="text"></ion-input>
+    <ion-input *ngIf="user" name="ref" [(ngModel)]="user.direccion" type="text" inputmode="text"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="!ingresarEnable">

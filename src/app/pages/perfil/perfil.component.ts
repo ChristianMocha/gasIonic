@@ -107,6 +107,7 @@ export class PerfilComponent implements OnInit {
 
     await this.authService.login(credenciales.email, credenciales.password).then(
       res => {
+        console.log('logueado correctamente');
       }
     );
 

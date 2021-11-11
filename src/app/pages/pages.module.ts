@@ -7,6 +7,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { CarritoComponent } from './carrito/carrito.component';
+import { MisPedidosComponent } from './mis-pedidos/mis-pedidos.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 
 
@@ -14,7 +16,9 @@ import { CarritoComponent } from './carrito/carrito.component';
   declarations: [
     HomeComponent,
     PerfilComponent,
-    CarritoComponent
+    CarritoComponent,
+    MisPedidosComponent,
+    PedidosComponent
   ],
   imports: [
     CommonModule,

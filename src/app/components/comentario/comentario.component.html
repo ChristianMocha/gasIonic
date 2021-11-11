@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-wrap">
+      Comentarios
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>{{producto.name}}</ion-label>
+  </ion-item>
+
+  <ion-item *ngFor="let commet  of comentarios">
+    <ion-label>{{commet.autor}}
+      <p>{{commet.comentario}}</p>
+      <p>{{commet.fecha.seconds*1000 | date:'medium'}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+<div style="text-align: center;">
+  <ion-button (click)="loadComentarios()">Cargar Mas</ion-button>
+</div>
+
+<ion-footer>
+  <ion-item>
+    <ion-textarea [(ngModel)]="comentario" placeholder="Escribir tu comentario...."></ion-textarea>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="comentar()">
+        <ion-icon color="success" slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-footer>
+

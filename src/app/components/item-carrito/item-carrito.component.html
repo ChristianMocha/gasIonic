@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-img [src]="producto.producto.img"></ion-img>
+      </ion-col>
+
+      <ion-col size="8">
+        <ion-item>
+          <ion-label class="ion-text-wrap">{{producto.producto.name}}</ion-label>
+          <ion-buttons slot="end" *ngIf="botones">
+
+            <ion-button class="icon-add" (click)="addCarrito()">
+              <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+            </ion-button>
+
+            <ion-button class="icon-remove" (click)="removeCarrito()">
+              <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+            </ion-button>
+
+          </ion-buttons>
+        </ion-item>
+
+        <p class="m-3">Precio: {{producto.producto.precioDescuento}} $</p>
+        <p class="m-3">Cantidad: {{producto.cantidad}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
